@@ -31,5 +31,31 @@ namespace Laboratorio4
             head = head.siguiente;
             return head;
         }
+
+        public Nodo push (Nodo head, int dat, int prio)
+        {
+            Nodo inicio = head;
+            Nodo sele = nuevo(dat, prio);
+            if (head.prioridad > prio)
+            {
+                sele.siguiente = head;
+                head = sele;
+            }
+            else
+            {
+                while (inicio.siguiente != null && inicio.siguiente.prioridad < prio)
+                {
+                    inicio = inicio.siguiente;
+                }
+                sele.siguiente = inicio.siguiente;
+                inicio.siguiente = sele;
+            }
+            return head;
+        }
+
+        public int Vacio (Nodo head)
+        {
+            return (head == null) ? 1 : 0;
+        }
     }
 }
