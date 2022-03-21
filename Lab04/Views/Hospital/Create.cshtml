@@ -1,0 +1,63 @@
+﻿@model Lab04.Models.HospitalModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>HospitalModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sexo" class="control-label"></label>
+                @Html.DropDownListFor(Model => Model.Sexo, new SelectList(ViewBag.SexoLista), "Seleccione sexo", htmlAttributes: new { @class = "form-control" })
+                <span asp-validation-for="Sexo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Edad" class="control-label"></label>
+                @Html.DropDownListFor(Model => Model.Edad, new SelectList(ViewBag.EdadLista), "Seleccione edad", htmlAttributes: new { @class = "form-control" })
+                <span asp-validation-for="Edad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Especializacion" class="control-label"></label>
+                @Html.DropDownListFor(Model => Model.Especializacion, new SelectList(ViewBag.EspLista), "Seleccione especializacion", htmlAttributes: new { @class = "form-control" })
+                <span asp-validation-for="Especializacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingreso" class="control-label"></label>
+                @Html.DropDownListFor(Model => Model.Ingreso, new SelectList(ViewBag.IngresoLista), "Seleccione tipo de ingreso", htmlAttributes: new { @class = "form-control" })
+                <span asp-validation-for="Ingreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
