@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace Laboratorio4
 {
-    public class Cola<T> : IEnumerable<T>, IEnumerable
+    public class Cola<T>
     {
 
-        Node<T> head;
+        //Node<T> head;
 
-        //public Node<T> nuevo (T info)
+        ////public Node<T> nuevo (T info)
+        ////{
+        ////    Node<T> nuevo = new Node<T>();
+        ////    nuevo.value = info;
+        ////    nuevo.Previous = null;
+        ////    return nuevo;
+        ////}
+
+        //public Node<T> top(Node<T> head)
         //{
-        //    Node<T> nuevo = new Node<T>();
-        //    nuevo.value = info;
-        //    nuevo.Previous = null;
-        //    return nuevo;
+        //    return head;
         //}
-
-        public Node<T> top(Node<T> head)
-        {
-            return head;
-        }
 
         //public Node<T> pop(Node<T> head)
         //{
@@ -64,15 +64,15 @@ namespace Laboratorio4
         //    return (head == null) ? 1 : 0;
         //}
 
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+    //    public IEnumerator GetEnumerator()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+    //    IEnumerator<T> IEnumerable<T>.GetEnumerator()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
     }
 
 }
