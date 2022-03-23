@@ -9,6 +9,5 @@ namespace Lab04
     {
         public T value;
         public Node<T> Next;
-        public Node<T> Previous;
     }
 }
