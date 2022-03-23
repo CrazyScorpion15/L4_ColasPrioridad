@@ -33,31 +33,31 @@ namespace Laboratorio4
         //    return head;
         //}
 
-        public void push (T dato, Comparar<T> comparador)
-        {
-            Node<T> nuevo = new Node<T>
-            {
-                value = dato,
-                Next = null,
-            };
+        //public void push (T dato, Comparar<T> comparador)
+        //{
+        //    Node<T> nuevo = new Node<T>
+        //    {
+        //        value = dato,
+        //        Next = null,
+        //    };
 
-            T inicio = dato;
-            Node<T> sele = comparador(dato, prio);
-            if (head.Next > prio)
-            {
-                sele.Previous = head;
-                head = sele;
-            }
-            else
-            {
-                while (inicio.Previous != null && inicio.Previous.Next < prio)
-                {
-                    inicio = inicio.Previous;
-                }
-                sele.Previous = inicio.Previous;
-                inicio.Previous = sele;
-            }
-        }
+        //    T inicio = dato;
+        //    Node<T> sele = comparador(dato, prio);
+        //    if (head.Next > prio)
+        //    {
+        //        sele.Previous = head;
+        //        head = sele;
+        //    }
+        //    else
+        //    {
+        //        while (inicio.Previous != null && inicio.Previous.Next < prio)
+        //        {
+        //            inicio = inicio.Previous;
+        //        }
+        //        sele.Previous = inicio.Previous;
+        //        inicio.Previous = sele;
+        //    }
+        //}
 
         //public Node<T> Vacio (Node<T> head)
         //{
