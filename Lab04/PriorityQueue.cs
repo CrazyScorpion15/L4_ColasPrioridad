@@ -58,7 +58,7 @@ namespace Lab04
                 }
                 if (nuevo.Priority > anterior.Priority)
                 { 
-                    if(cantidadNodos == 1)
+                    if(cantidadNodos == 2)
                     {
                         raiz = raizCambio;
                         
@@ -70,7 +70,7 @@ namespace Lab04
                 }
                 else
                 {
-                    if (cantidadNodos == 1)
+                    if (cantidadNodos == 2)
                     {
                         raiz = raizCambio;
 
