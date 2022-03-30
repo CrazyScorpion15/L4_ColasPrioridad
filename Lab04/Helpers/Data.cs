@@ -10,7 +10,7 @@ namespace Lab04.Helpers
     {
         private static Data _instance = null;
 
-        public ColaPrio<HospitalModel> Cola = new ColaPrio<HospitalModel>();
+        public PriorityQueue<HospitalModel> PriorityQueue = new PriorityQueue<HospitalModel>();
         public static Data Instance
         {
             get

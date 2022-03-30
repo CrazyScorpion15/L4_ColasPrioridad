@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Lab04.Helpers;
 
 namespace Lab04.Models
 {
     public class HospitalModel
     {
-        public int Prioridad { get; set; }
         [Required]
         public string Nombre { get; set; }
         [Required]
@@ -26,7 +26,7 @@ namespace Lab04.Models
 
         public static bool Save(HospitalModel model, int prioridad)
         {
-            //<----------------Save de la cola de prioridad           
+            Data.Instance.PriorityQueue.Insertar(model, prioridad);//<----------------Save de la cola de prioridad           
             return true;
         }
         public static bool CalculoPrio(HospitalModel model)
