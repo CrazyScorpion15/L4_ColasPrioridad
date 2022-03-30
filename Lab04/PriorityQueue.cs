@@ -36,15 +36,42 @@ namespace Lab04
                 while (pivot != null)
                 {
                     anterior = pivot;
+
+
                     if (cantidadNodos % 2 == 0)
                     {
-                        pivot = pivot.izq;
+                        if (pivot.izq == null)
+                        {
+                            if (pivot.izq == null)
+                            {
+                                pivot = pivot.izq;
+                            }
+                            else if(pivot.der == null)
+                            {
+                                pivot = pivot.der;
+                            }
+                        }
+                        else if (pivot.der == null)
+                        {   
+                                pivot = pivot.der;                           
+                        }
+                        else if(pivot.der == null)
+                        {
+                            pivot = pivot.der;
+                        }
+
                     }
                     else
                     {
-                        pivot = pivot.der;
+                        if (pivot.der == null)
+                        {
+                            pivot = pivot.der;
+                        }
+                        else
+                        {
+                            pivot = pivot.izq;
+                        }
                     }
-
                 }
                 if (cantidadNodos % 2 ==0)
                     anterior.izq = nuevo;
