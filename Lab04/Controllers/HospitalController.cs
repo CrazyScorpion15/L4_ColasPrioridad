@@ -14,7 +14,7 @@ namespace Lab04.Controllers
         // GET: HospitalController
         public ActionResult Index()
         {
-            return View(Data.Instance.Cola);
+            return View(Data.Instance.PriorityQueue);
         }
 
         // GET: HospitalController/Details/5

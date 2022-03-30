@@ -12,23 +12,23 @@ namespace Lab04
     public class Comparar
     {
 
-        public static int Comp(HospitalModel a, HospitalModel b)
-        {
-            if (a.Prioridad != b.Prioridad)
-            {
-                if (a.Prioridad.CompareTo(b.Prioridad) < 0)
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-            else
-            {
-                return 0;
-            }
-        }
+        //public static int Comp(HospitalModel a, HospitalModel b)
+        //{
+        //    if (a.Prioridad != b.Prioridad)
+        //    {
+        //        if (a.Prioridad.CompareTo(b.Prioridad) < 0)
+        //        {
+        //            return -1;
+        //        }
+        //        else
+        //        {
+        //            return 1;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return 0;
+        //    }
+        //}
     }
  }
