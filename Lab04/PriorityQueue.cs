@@ -9,7 +9,7 @@ namespace Lab04
     public class PriorityQueue<T> : IEnumerable<T>, IEnumerable
     {
         public PriorityQueueNode<T> raiz;
-        int cantidadNodos = 0 ;
+        int cantidadNodos = 1;
         public PriorityQueue()
         {
             raiz = null;
@@ -25,72 +25,46 @@ namespace Lab04
                 der = null
             };
             if (raiz == null)
+            {
                 raiz = nuevo;
+            }
             else
             {
-                PriorityQueueNode<T> anterior = null, pivot, raizCambio = null, siguiente = null;
+                PriorityQueueNode<T> anterior = null, pivot;
                 pivot = raiz;
+                cantidadNodos++;
                 while (pivot != null)
                 {
                     anterior = pivot;
-                    PriorityQueueNode<T> temp = new PriorityQueueNode<T>
+                    if (cantidadNodos % 2 == 0)
                     {
-                        Object = pivot.Object,
-                        Priority = pivot.Priority,
-                        izq = pivot.izq,
-                        der = pivot.der,
-                    };
-                    if (nuevo.Priority > pivot.Priority)
-                    {
-                        pivot = nuevo;
-                        nuevo = temp;
-
-                        raizCambio = pivot;
-
                         pivot = pivot.izq;
-                        cantidadNodos++;
                     }
                     else
                     {
                         pivot = pivot.der;
-                        cantidadNodos++;
                     }
-                }
-                if (nuevo.Priority > anterior.Priority)
-                { 
-                    if(cantidadNodos == 1)
-                    {
-                        raiz = raizCambio;
-                        
-                    }
-                    else
-                    {
-                        anterior.izq = nuevo;
-                    } 
-                }
-                else
-                {
-                    if (cantidadNodos == 1)
-                    {
-                        raiz = raizCambio;
 
-                    }
-                    else
-                    {
-                        anterior.der = nuevo;
-                    }
                 }
+                if (cantidadNodos % 2 ==0)
+                    anterior.izq = nuevo;
+                else
+                    anterior.der = nuevo;
             }
         }
-        private void Swap(ref PriorityQueueNode<T> pivot, ref PriorityQueueNode<T> nuevo)
+        private void Swap(PriorityQueueNode<T> primero, PriorityQueueNode<T> segundo)
         {
-            PriorityQueueNode<T> temp = new PriorityQueueNode<T>
+            //PriorityQueueNode<T> temp = new PriorityQueueNode<T>
+            //{
+            //    Object = pivot.Object,
+            //    Priority = pivot.Priority,
+            //};
+            //pivot = nuevo;
+            //nuevo = temp;
+            if(primero.Priority > segundo.Priority)
             {
-                Object = pivot.Object,
-                Priority = pivot.Priority,
-            };
-            pivot = nuevo;
-            nuevo = temp;
+
+            }
         }
         private void InOrder(PriorityQueueNode<T> root, ref ShowList<T> queue)
         {
