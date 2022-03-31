@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<Lab04.Models.HospitalModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Hospital";
 }
 
-<h1>Index</h1>
+<h1>Hospital</h1>
 
 <p>
-    <a asp-action="Create">Registrar paciente</a> | <p>@ViewBag.Message</p>
+    <a asp-action="Create">Registrar paciente</a> | @Html.ActionLink("Atender", "Peek", new { }) | 
+<p>@ViewBag.Message</p>
 </p>
 <table class="table">
     <thead>

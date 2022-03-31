@@ -24,11 +24,21 @@ namespace Lab04
             };
             return temp;
         }
-        public T peek(PriorityQueueNode<T> head)
+        public T peek()
         {
-            return head.Object;
+            if(raiz != null)
+            {
+                return raiz.Object;
+            }
+            return default(T);
         }
-
+        public void Organizar()
+        {
+            if(raiz != null)
+            {
+                raiz = raiz.der;
+            }
+        }
         public void Push(T valor, int prio)
         {
             if(raiz == null)

@@ -110,7 +110,15 @@ namespace Lab04.Controllers
 
         public ActionResult Peek()
         {
-            
+            var atendido = HospitalModel.Atendiendo();
+            if (atendido != null)
+            {
+                ViewBag.Message = "El paciente que está siendo atendido es: " + atendido.Nombre + " " + atendido.Apellido;
+            }
+            else
+            {
+                ViewBag.Message = "Ya no hay mas pacientes";
+            }
             return View(Data.Instance.PriorityQueue);
         }
 
