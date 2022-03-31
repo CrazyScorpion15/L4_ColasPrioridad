@@ -14,13 +14,55 @@ namespace Lab04
         {
             raiz = null;
         }
+        public PriorityQueueNode<T> newNode(T valor, int prio)
+        {
+            PriorityQueueNode<T> temp = new PriorityQueueNode<T>
+            {
+                Object = valor,
+                Priority = prio,
+                der = null,
+            };
+            return temp;
+        }
+        public T peek(PriorityQueueNode<T> head)
+        {
+            return head.Object;
+        }
 
+        public void Push(T valor, int prio)
+        {
+            if(raiz == null)
+            {
+                raiz = newNode(valor, prio);
+            }
+            else
+            {
+                PriorityQueueNode<T> start = raiz;
+                PriorityQueueNode<T> temp = newNode(valor, prio);
+
+                if (raiz.Priority < prio)
+                {
+                    temp.der = raiz;
+                    raiz = temp;
+                }
+                else
+                {
+                    while (start.der != null && start.der.Priority > prio)
+                    {
+                        start = start.der;
+                    }
+                    temp.der = start.der;
+                    start.der = temp;
+                }
+            } 
+        }
         public void Insertar(T valor, int prio)
         {
             PriorityQueueNode<T> nuevo = new PriorityQueueNode<T>
             {
                 Object = valor,
                 Priority = prio,
+                Pos = cantidadNodos,
                 izq = null,
                 der = null
             };
@@ -73,45 +115,115 @@ namespace Lab04
                         }
                     }
                 }
-                if (cantidadNodos % 2 ==0)
+                if (cantidadNodos % 2 == 0)
                     anterior.izq = nuevo;
                 else
                     anterior.der = nuevo;
             }
         }
-        private void Swap(PriorityQueueNode<T> primero, PriorityQueueNode<T> segundo)
+        private PriorityQueueNode<T> Swap(PriorityQueueNode<T> primero, PriorityQueueNode<T> segundo)
         {
-            //PriorityQueueNode<T> temp = new PriorityQueueNode<T>
-            //{
-            //    Object = pivot.Object,
-            //    Priority = pivot.Priority,
-            //};
-            //pivot = nuevo;
-            //nuevo = temp;
-            if(primero.Priority > segundo.Priority)
+            if(primero != null && segundo != null)
             {
-
+                PriorityQueueNode<T> temp = new PriorityQueueNode<T>
+                {
+                    Object = primero.Object,
+                    Priority = primero.Priority,
+                    izq = primero.izq,
+                    der = primero.der,
+                };
+                if (segundo.Priority > primero.Priority)
+                {
+                    primero = segundo;
+                    segundo = temp;
+                }
+            }
+            return primero;
+        }
+        //private void InOrder(PriorityQueueNode<T> root, ref ShowList<T> queueAVL)
+        //{
+        //    if (root != null)
+        //    {
+        //        InOrder(root.izq, ref queueAVL);
+        //        queueAVL.Add(root.Object);
+        //        InOrder(root.der, ref queueAVL);
+        //    }
+        //    return;
+        //}
+        public void CreacionRaiz(T valor, int prio)
+        {
+            if(raiz == null)
+            {
+                raiz = new PriorityQueueNode<T>
+                {
+                    Object = valor,
+                    Priority = prio,
+                    Pos = cantidadNodos,
+                    izq = null,
+                    der = null,
+                };
+            }
+            else
+            {
+                cantidadNodos++;
+                Insertar(raiz, valor, prio);
             }
         }
-        private void InOrder(PriorityQueueNode<T> root, ref ShowList<T> queue)
+        public void Insertar(PriorityQueueNode<T> root, T valor, int prioridad)
         {
             if (root != null)
             {
-                InOrder(root.izq, ref queue);
-                queue.Add(root.Object);
-                InOrder(root.der, ref queue);
+                Insertar(root.izq, valor, prioridad);
+                if ((cantidadNodos / 2) == root.Pos)
+                {
+                    PriorityQueueNode<T> nuevo = new PriorityQueueNode<T>
+                    {
+                        Object = valor,
+                        Priority = prioridad,
+                        Pos = cantidadNodos,
+                        izq = null,
+                        der = null,
+                    };
+                    root.izq = nuevo;
+                    root.Pos = cantidadNodos;
+                }
+                else if(((cantidadNodos - 1) / 2) == root.Pos)
+                {
+                    PriorityQueueNode<T> nuevo = new PriorityQueueNode<T>
+                    {
+                        Object = valor,
+                        Priority = prioridad,
+                        Pos = cantidadNodos,
+                        izq = null,
+                        der = null,
+                    };
+                    root.der = nuevo;
+                    root.Pos = cantidadNodos;
+                }
+                Insertar(root.der, valor, prioridad);
+            }
+            return;
+        }
+
+        private void InOrder(PriorityQueueNode<T> root, ref ShowList<T> queueAVL)
+        {
+            if (root != null)
+            {
+                InOrder(root.izq, ref queueAVL);
+                queueAVL.Add(root.Object);
+                InOrder(root.der, ref queueAVL);
             }
             return;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            var queue = new ShowList<T>();
-            InOrder(raiz, ref queue);
+            var queueAVL = new ShowList<T>();
+            InOrder(raiz, ref queueAVL);
 
-            while (!queue.Empty())
+            while (!queueAVL.Empty())
             {
-                yield return queue.Dequeue();
+                yield return queueAVL.Dequeue();
             }
         }
         IEnumerator IEnumerable.GetEnumerator()

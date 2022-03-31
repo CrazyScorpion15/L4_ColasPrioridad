@@ -26,7 +26,7 @@ namespace Lab04.Models
 
         public static bool Save(HospitalModel model, int prioridad)
         {
-            Data.Instance.PriorityQueue.Insertar(model, prioridad);//<----------------Save de la cola de prioridad           
+            Data.Instance.PriorityQueue.CreacionRaiz(model, prioridad);//<----------------Save de la cola de prioridad           
             return true;
         }
         public static bool CalculoPrio(HospitalModel model)
