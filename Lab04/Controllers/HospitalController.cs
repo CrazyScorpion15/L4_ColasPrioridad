@@ -14,6 +14,7 @@ namespace Lab04.Controllers
         // GET: HospitalController
         public ActionResult Index()
         {
+            ViewBag.Message = "El paciente que está siendo atendido es: ";
             return View(Data.Instance.PriorityQueue);
         }
 
@@ -106,5 +107,12 @@ namespace Lab04.Controllers
                 return View();
             }
         }
+
+        public ActionResult Peek()
+        {
+            
+            return View(Data.Instance.PriorityQueue);
+        }
+
     }
 }
