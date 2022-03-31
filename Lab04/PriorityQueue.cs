@@ -40,22 +40,22 @@ namespace Lab04
 
                     if (cantidadNodos % 2 == 0)
                     {
-                        if (pivot.izq == null)
+                        if (pivot.izq == null || pivot.der == null)
                         {
                             if (pivot.izq == null)
                             {
                                 pivot = pivot.izq;
                             }
-                            else if(pivot.der == null)
+                            else
                             {
                                 pivot = pivot.der;
                             }
                         }
-                        else if (pivot.der == null)
+                            else if(pivot.izq != null)
                         {   
-                                pivot = pivot.der;                           
+                                pivot = pivot.izq;                           
                         }
-                        else if(pivot.der == null)
+                            else if(pivot.der != null)
                         {
                             pivot = pivot.der;
                         }
